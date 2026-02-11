@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { initHeroAnimations } from '../../src/utils/animations';
 import '../css/Home.css';
+import Navbar from './Navbar';
 
 const Home = () => {
 useEffect(() => {
@@ -10,9 +11,10 @@ useEffect(() => {
 
   return (
     <section className="hero-container">
+        <Navbar />
       <div className="hero-text">
         <h1 className="fade-in">José Daniel Lara Meza</h1>
-        <h2 className="fade-in">JDLM&nbsp;&nbsp;Web&nbsp;&nbsp;Development</h2>
+        <h2 className="fade-in">&nbsp;JDLM&nbsp;&nbsp;Web&nbsp;&nbsp;Development</h2>
         <p className="fade-in delay-1">
           Creando experiencias digitales, elegantes y funcionales
         </p>
