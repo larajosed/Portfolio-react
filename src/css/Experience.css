@@ -1,0 +1,139 @@
+/* Contenedor General */
+.trayectoria-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+  color: #1a1a1a;
+}
+
+/* Títulos con el estilo de tu imagen "Sobre mí" */
+.serif-title {
+  font-family: 'Playfair Display', serif; /* O la que estés usando con serifa */
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.title-underline {
+  width: 50px;
+  height: 2px;
+  background: #000;
+  margin: 0 auto 50px;
+}
+
+.bento-grid-portfolio {
+  display: grid;
+  /* Cambiamos a 2 columnas para que las tarjetas de 'span 2' encajen 
+     o mantenemos 3 pero centramos el contenido */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1.5rem;
+  justify-content: center; /* Centra las columnas horizontalmente */
+  align-items: center;     /* Centra las tarjetas verticalmente si tienen distinta altura */
+  max-width: 900px;        /* Opcional: ajusta el ancho para que no se estiren demasiado */
+  margin: 0 auto;          /* Centra el grid respecto al contenedor padre */
+}
+
+/* Tarjeta Principal */
+.bento-card-main {
+  /* Al tener 2 columnas en el grid, el span 2 ocupará todo el ancho disponible */
+  grid-column: span 2; 
+  display: flex;
+  flex-direction: column;
+  /* Asegura que no crezca infinitamente */
+  width: 100%;
+  box-sizing: border-box; 
+}
+/* Estilo Base de Tarjetas Coherente con tus capturas */
+.bento-card-main, .bento-card-soft, .bento-card-plain {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px; /* Bordes menos redondeados para encajar con tus botones */
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+
+.card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.job-date { font-size: 0.8rem; color: #888; }
+
+.job-badge {
+  border: 1px solid #000;
+  padding: 2px 10px;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.job-title { font-size: 1.8rem; margin: 0; }
+.job-company { font-weight: 600; color: #333; margin-top: 5px; }
+.job-description { color: #555; line-height: 1.6; margin: 20px 0; }
+
+/* Métricas internas */
+.job-metrics {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.metric {
+  border-left: 2px solid #000;
+  padding-left: 15px;
+}
+
+.metric-num { display: block; font-size: 1.5rem; font-weight: 700; }
+.metric-txt { font-size: 0.7rem; color: #777; text-transform: uppercase; }
+
+/* Tags estilo "Sobre mí" */
+.job-tags span {
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  padding: 5px 15px;
+  margin-right: 8px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+/* Tarjeta Negra (Métrica) */
+.bento-card-black {
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-stat { font-size: 4rem; font-weight: 700; }
+.stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+
+/* Tarjeta de Liderazgo */
+.bento-card-soft h4, .bento-card-plain h4 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10px;
+}
+
+.bento-card-soft p { font-size: 0.9rem; color: #666; }
+
+.card-icon-bottom {
+  text-align: right;
+  font-size: 2rem;
+  margin-top: 10px;
+  opacity: 0.2;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .bento-grid-portfolio {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .bento-card-main { grid-column: span 1; }
+}

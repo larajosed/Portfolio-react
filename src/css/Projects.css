@@ -1,0 +1,134 @@
+/* Projects.css - Estilo 100% Integrado */
+
+.unified-section {
+  max-width: 1100px;
+  margin: 100px auto;
+  padding: 0 20px;
+  background: #fff;
+}
+
+.central-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Títulos con el mismo estilo que 'Sobre mi' */
+.serif-title {
+  font-family: 'Playfair Display', serif; 
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 10px 0;
+  color: #000;
+}
+
+.separator-line {
+  width: 50px;
+  height: 2px;
+  background: #000;
+  margin: 0 auto;
+}
+
+/* Grid de proyectos */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+/* Tarjeta con bordes finos */
+.project-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image-container {
+  width: 100%;
+  height: 220px;
+  border-bottom: 1px solid #eee;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 25px;
+}
+
+/* Tipografía de cuerpo igual a 'Sobre mi' */
+.project-title-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #2b2929d0;
+}
+
+.project-description-text {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Tags con el formato de tus tecnologías */
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.tech-tag {
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  color: #444;
+}
+
+/* Botones con el efecto de línea animada */
+.project-links {
+  display: flex;
+  gap: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #2b2929d0;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+}
+
+/* Efecto de subrayado elegante */
+.link-button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0.8px;
+  bottom: -2px;
+  left: 0;
+  background-color: #2b2929d0;
+  transition: width 0.3s ease;
+}
+
+.link-button:hover::after {
+  width: 100%;
+}

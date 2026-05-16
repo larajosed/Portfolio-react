@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { initHeroAnimations } from '../../src/utils/animations';
 import '../css/Home.css';
-import Navbar from './Navbar';
+import Navbar from '../components/Navbar';
+import About from './About';
+import Projects from './Projects';
+import Experience from './Experience';
+import { Form } from 'react-router-dom';
+import Contact from './Contact';
 
 const Home = () => {
 useEffect(() => {
@@ -10,10 +15,11 @@ useEffect(() => {
 }, []);
 
   return (
-    <section className="hero-container">
+    <>
+    <section className="hero-container" id="inicio">
         <Navbar />
       <div className="hero-text">
-        <h1 className="fade-in">José Daniel Lara Meza</h1>
+        <h1 className="fade-in" >José Daniel Lara Meza</h1>
         <h2 className="fade-in">&nbsp;JDLM&nbsp;&nbsp;Web&nbsp;&nbsp;Development</h2>
         <p className="fade-in delay-1">
           Creando experiencias digitales, elegantes y funcionales
@@ -21,9 +27,13 @@ useEffect(() => {
       
         
     <div className="button-group fade-in delay-2">
-          <button className="btn-primary">Ver mi Trabajo</button>
-          <button className="btn-secondary">Contáctame</button>
-        </div>
+        <a href="#proyectos" className="btn-primary">
+    Ver mi Trabajo
+  </a>
+  <a href="#contacto" className="btn-secondary">
+    Contáctame
+  </a>
+      </div>
       </div>
 
 
@@ -67,6 +77,10 @@ useEffect(() => {
   </svg>
       </div>
     </section>
+    <About />
+    <Projects/>
+    <Experience/>
+    <Contact/></>
   );
 };
 
