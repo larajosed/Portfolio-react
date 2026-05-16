@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import '../css/Projects.css';
 import ProjectModal from '../components/ProjectModal';
 import peluqueo from '../assets/inicio.png';
-import carrito from '../assets/peluqueo/carrito.png'
-import carritoVacio from '../assets/peluqueo/carritoVacio.png'
-import datosPago from '../assets/peluqueo/datosPago.png'
-import formulario from '../assets/peluqueo/formulario.png'
-import pelucas from '../assets/peluqueo/pelucas1.png'
-import hero from '../assets/larapremium/hero.png'
-import contacto from '../assets/larapremium/contacto.png'
-import elige from '../assets/larapremium/elige.png'
-import servicios from '../assets/larapremium/servicios.png'
-import sobreMi from '../assets/larapremium/sobreMi.png'
+import carrito from '../assets/peluqueo/carrito.png';
+import carritoVacio from '../assets/peluqueo/carritoVacio.png';
+import datosPago from '../assets/peluqueo/datosPago.png';
+import formulario from '../assets/peluqueo/formulario.png';
+import pelucas from '../assets/peluqueo/pelucas1.png';
+import hero from '../assets/larapremium/hero.png';
+import contacto from '../assets/larapremium/contacto.png';
+import elige from '../assets/larapremium/elige.png';
+import servicios from '../assets/larapremium/servicios.png';
+import sobreMi from '../assets/larapremium/sobreMi.png';
 
 interface Project {
   id: number;
