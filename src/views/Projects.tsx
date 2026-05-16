@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import '../css/Projects.css';
 import ProjectModal from '../components/ProjectModal';
-import ecommerce from '../assets/plataformas-ecommerce.jpg';
-import peluqueo from '../assets/Inicio.png';
+import peluqueo from '../assets/inicio.png';
 import carrito from '../assets/peluqueo/carrito.png'
 import carritoVacio from '../assets/peluqueo/carritoVacio.png'
 import datosPago from '../assets/peluqueo/datosPago.png'
