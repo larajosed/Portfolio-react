@@ -18,25 +18,49 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
-  // 1. Ahora manejamos el ÍNDICE de la imagen activa
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (project) {
       setCurrentIndex(0); // Empezar siempre en la primera
       document.body.style.overflow = 'hidden';
+
+      // 1. Añadimos un estado artificial al historial del navegador al abrir la modal
+      window.history.pushState({ modalOpen: true }, '');
+
+      // 2. Escuchamos el botón o gesto de "Atrás" del dispositivo
+      const handlePopState = () => {
+        onClose(); // Si el usuario va hacia atrás, cerramos la modal
+      };
+
+      window.addEventListener('popstate', handlePopState);
+
+      // Limpieza al desmontar o cerrar
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => { document.body.style.overflow = 'unset'; };
-  }, [project]);
+  }, [project, onClose]);
 
   if (!project) return null;
 
-  // 2. Construir galería (Imagen principal + adicionales)
+  // Función para cerrar de forma segura limpiando el historial sobrante
+  const handleSafeClose = () => {
+    // Si el usuario cierra haciendo clic en la "✕" o fuera de la modal, 
+    // quitamos el estado artificial del historial para no descolocar la navegación
+    if (window.history.state?.modalOpen) {
+      window.history.back();
+    } else {
+      onClose();
+    }
+  };
+
+  // Construir galería (Imagen principal + adicionales)
   const gallery = project.imagenes ? [project.imagen, ...project.imagenes] : [project.imagen];
 
-  // 3. Funciones de navegación por ÍNDICE
+  // Funciones de navegación por ÍNDICE
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrentIndex((prev) => (prev + 1) % gallery.length);
@@ -48,9 +72,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" onClick={handleSafeClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="close-button" onClick={onClose}>✕</button>
+        {/* Cambiado onClose por handleSafeClose */}
+        <button className="close-button" onClick={handleSafeClose}>✕</button>
         
         <div className="modal-grid">
           <div className="modal-gallery">
@@ -59,14 +84,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                 <>
                   <button className="nav-arrow prev" onClick={prevImage} type="button">❮</button>
                   <button className="nav-arrow next" onClick={nextImage} type="button">❯</button>
-                </>
+                </                >
               )}
-              {/* Mostramos la imagen según el índice actual */}
               <img 
                 src={gallery[currentIndex]} 
                 alt={`${project.titulo} ${currentIndex}`} 
                 className="main-modal-img" 
-                key={currentIndex} // La key fuerza una pequeña animación de recarga si el CSS la tiene
+                key={currentIndex} 
               />
             </div>
             
@@ -76,7 +100,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                   <div 
                     key={index} 
                     className={`thumb-container ${currentIndex === index ? 'active-thumb' : ''}`}
-                    onClick={() => setCurrentIndex(index)} // Cambia por índice
+                    onClick={() => setCurrentIndex(index)} 
                   >
                     <img src={img} alt={`Vista ${index}`} />
                   </div>
@@ -98,7 +122,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             
             <div className="modal-footer-actions">
               <a href={project.linkProyecto} target="_blank" rel="noreferrer" className="primary-black-button">Visitar Web</a>
-             {/* <a href={project.linkCodigo} target="_blank" rel="noreferrer" className="secondary-outline-button">GitHub</a>*/}
             </div>
           </div>
         </div>
